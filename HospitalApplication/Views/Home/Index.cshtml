@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Hastane Anasayfası";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Eğer kullanılacaksa diğer CSS dosyalarını burada linkleyebilirsiniz -->
+    <style>
+        /* Özel CSS kurallarınızı buraya ekleyebilirsiniz */
+        .hastane-banner {
+            margin-bottom: 40px;
+        }
+
+            .hastane-banner img {
+                width: 80%;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .hastane-banner .banner-text {
+                text-align: center;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-6 offset-md-3">
+                <div class="hastane-banner">
+                    <img src="~/pictures/hospital.jpg" alt="Hastane Resmi" class="img-fluid mb-4">
+                    <div class="banner-text">
+                        <h1 class="display-4">Hoşgeldiniz</h1>
+                        <p class="lead">Hastanemizde sizin için en iyi sağlık hizmetlerini sunmaktan mutluluk duyuyoruz. Detaylı bilgi için lütfen sitemizi ziyaret edin.</p>
+                        <a href="hastane-hizmetleri.html" class="btn btn-primary">Hizmetlerimiz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery kütüphanesi -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JavaScript kütüphanesi -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+pcyBj0Wwv8+0p3z5KvoCSu9VlO4+izn" crossorigin="anonymous"></script>
+
+    <!-- Özel JavaScript dosyalarınızı burada ekleyebilirsiniz -->
+    <script>
+        // Özel JavaScript kodlarınızı buraya ekleyebilirsiniz
+        $(document).ready(function () {
+            // Tooltips örneği
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</body>
+</html>

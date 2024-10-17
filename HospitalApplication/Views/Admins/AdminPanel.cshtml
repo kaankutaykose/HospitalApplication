@@ -1,0 +1,39 @@
+﻿@model HospitalApplication.Models.Admin
+@{
+    ViewData["Title"] = "AdminPanel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Admin Panel</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <a asp-controller="Admins" asp-action="Index" class="btn btn-primary btn-lg btn-block mb-3">
+                Hastaları Düzenle
+            </a>
+        </div>
+        <div class="col-md-6 text-center">
+            <a asp-controller="Admins" asp-action="DoctorIndex" class="btn btn-primary btn-lg btn-block mb-3">
+                Doktorları Düzenle
+            </a>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6 offset-md-3 text-center">
+            <img src="~/pictures/admin.jpg" alt="Admin" class="img-fluid rounded-circle" />
+        </div>
+    </div>
+</div>
+
+<style>
+    /* İsteğe bağlı olarak ekleyebileceğiniz özel stil */
+    .btn-block {
+        margin-bottom: 10px;
+    }
+
+    .rounded-circle {
+        border: 2px solid #007bff; /* Mavi renkte sınırla */
+    }
+</style>

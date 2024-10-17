@@ -1,0 +1,61 @@
+﻿@model HospitalApplication.Models.BookAppointmentViewModel
+@{
+    ViewData["Title"] = "Book Appointment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Randevu Al</h2>
+    <form asp-action="BookAppointment" asp-controller="Patients" asp-route-id="@Model.PatientId" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="PatientId" />
+        <div class="form-group">
+            <label for="profession">Uzmanlık Alanı Seçin</label>
+            <select id="profession" asp-for="DoctorId" class="form-control" onchange="fetchDoctors()">
+                <option value="">-- Seçin --</option>
+                @foreach (var profession in Model.Professions)
+                {
+                    <option value="@profession.Value">@profession.Text</option>
+                }
+                
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="doctor">Doktor Seçin</label>
+            <select id="doctor" asp-for="DoctorId" class="form-control">
+                <option value="">-- Seçin --</option>
+                <!-- Doktorlar burada dinamik olarak yüklenecek -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="appointmentDate">Randevu Tarihi ve Saati</label>
+            <input type="datetime-local" asp-for="AppointmentDate" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-success">Randevu Al</button>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        
+        async function fetchDoctors() {
+            const professionSelect = document.getElementById('profession');
+            const doctorSelect = document.getElementById('doctor');
+            const profession = professionSelect.value;
+
+            // API'den doktorları getir
+            const response = await fetch(`/Patients/GetDoctorsByProfession?profession=${profession}`);
+            const doctors = await response.json();
+
+            // Doktor seçim listesini temizle
+            doctorSelect.innerHTML = '<option value="">-- Seçin --</option>';
+
+            // Doktorları dropdown'a ekle
+            doctors.forEach(doctor => {
+                const option = document.createElement('option');
+                option.value = doctor.id;  // Doktor ID'sini buradan alıyoruz
+                option.textContent = `${doctor.name} ${doctor.surname}`;
+                doctorSelect.appendChild(option);
+            });
+        }
+    </script>
+}
